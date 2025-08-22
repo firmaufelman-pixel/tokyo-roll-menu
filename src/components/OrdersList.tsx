@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { createUseStyles } from "react-jss";
 import { useNavigate } from "react-router-dom";
 import { DishContent } from "../lib/menu";
+import placeholderImg from "../assets/images/placeholder.png";
 
 const SUPABASE_IMAGE_PREFIX =
   "https://zwgovmkukyfqznkspkdm.supabase.co/storage/v1/object/public/menu";
@@ -81,18 +82,24 @@ export default function OrdersList({}: OrdersListProps) {
       </div>
     );
   }
+  const getDishImage = (image?: string) =>
+  image && image.trim() !== ""
+    ? SUPABASE_IMAGE_PREFIX + image
+    : placeholderImg;
 
   return (
     <div className={classes.ordersListWrapper}>
       {myOrders?.map((order, index) => (
         <Card key={index} className={classes.orderCard}>
           <div className={classes.orderImage}>
-            <img
-              src={
-                SUPABASE_IMAGE_PREFIX +
-                (order?.image ?? "/images/placeholder.png")
-              }
-            />
+           <img
+  src={getDishImage(order?.image)}
+  alt={order.dish_name}
+  onError={(e) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = placeholderImg;
+  }}
+/>
           </div>
           <div className={classes.orderCardContent}>
             <div>

@@ -5,6 +5,8 @@ import { createUseStyles } from "react-jss";
 import { checkIfLunchTime } from "shared/time";
 import { DishContent } from "../lib/menu";
 import DishDescription from "./DishDescription";
+import placeholderImg from "../assets/images/placeholder.png";
+
 
 const SUPABASE_IMAGE_PREFIX =
   "https://zwgovmkukyfqznkspkdm.supabase.co/storage/v1/object/public/menu";
@@ -120,26 +122,29 @@ export default function DishListCard({
 return (
   <Card
     className={`${classes.dishListCard} ${isOther ? classes.otherCard : ""}`}
-    cover={
-      isOther && dish?.image ? (
-        <div className={classes.otherImageWrapper}>
-          <img
-            src={SUPABASE_IMAGE_PREFIX + dish.image}
-            alt={dish.dish_name}
-            className={classes.otherImage}
-          />
-          <Extra dish={dish} /> {/* ❤️ Wishlist button back on top */}
-          <div className={classes.overlay}>
-            <Typography.Text className={classes.overlayName}>
-              {dish.dish_name}
-            </Typography.Text>
-            <Typography.Text className={classes.overlayPrice}>
-              {dish.price}
-            </Typography.Text>
-          </div>
-        </div>
-      ) : null
-    }
+    cover={isOther && (
+  <div className={classes.otherImageWrapper}>
+   <img
+  src={
+    dish?.image && dish.image.trim() !== ""
+      ? SUPABASE_IMAGE_PREFIX + dish.image
+      : placeholderImg
+  }
+  alt={dish.dish_name}
+  className={classes.otherImage}
+/>
+    <Extra dish={dish} />
+    <div className={classes.overlay}>
+      <Typography.Text className={classes.overlayName}>
+        {dish.dish_name}
+      </Typography.Text>
+      <Typography.Text className={classes.overlayPrice}>
+        {dish.price}
+      </Typography.Text>
+    </div>
+  </div>
+)}
+
   >
     {!isOther && (
       <>

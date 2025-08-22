@@ -6,6 +6,8 @@ import { checkIfLunchTime } from "shared/time";
 import { DishContent } from "../lib/menu";
 import DishDescription from "./DishDescription";
 import { SwiperSlide } from "./Swiper";
+import placeholderImg from "../assets/images/placeholder.png";
+
 
 const SUPABASE_IMAGE_PREFIX =
   "https://zwgovmkukyfqznkspkdm.supabase.co/storage/v1/object/public/menu";
@@ -24,7 +26,7 @@ export default function DishSlide({
   lunchPriceText,
 }: DishSlideProps) {
   const classes = useStyle();
-
+  const hasImage = !!(dish?.image && dish.image.trim() !== "");
   const handleAddDish =
     (dish: DishContent, price: string, callback: () => void) => () => {
       let order: Array<DishContent> = JSON.parse(
@@ -117,17 +119,19 @@ export default function DishSlide({
     />
   );
 
+//   const getDishImage = (dish?: DishContent) => {
+//   if (!dish?.image) {
+//     return "assets/images/placeholder.png"; 
+//   }
+//   return SUPABASE_IMAGE_PREFIX + dish.image;
+// };
+   const PLACEHOLDER_KEY = "placeholder.png";
   return (
-    <SwiperSlide
-      image={
-        !!dish?.image
-          ? dish.image
-          : index % 2
-          ? "/images/placeholder.png"
-          : "/images/placeholder-2.jpeg"
-      }
+       <SwiperSlide
+      image={hasImage ? dish.image : ""}            
       extra={<Extra dish={dish} />}
       data-category={dish.category}
+      data-has-image={hasImage ? "true" : "false"}  
     >
       <Typography.Title level={2} className={classes.slidetitle}>
         {dish.dish_name}
@@ -182,6 +186,19 @@ export default function DishSlide({
 }
 
 const useStyle = createUseStyles(({ colors }: Theme) => ({
+    "@global": {
+    /* When no image, hide <img> and paint local placeholder as background */
+    '.swiper-slide[data-has-image="false"] .swiper-carousel-animate-opacity': {
+      backgroundImage: `url(${placeholderImg})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      minHeight: 400, // keeps slide height stable
+    },
+    '.swiper-slide[data-has-image="false"] .swiper-carousel-animate-opacity img': {
+      display: "none",
+    },
+  },
   addToWishlistBtn: {
     height: "40px !important",
     width: "40px !important",
