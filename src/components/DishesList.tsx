@@ -96,19 +96,27 @@ export default function DishesList({
               }
             }}
           />
-          <Row gutter={[15, 15]}>
-            {dishArray.map((dish, dishIndex) => (
-              <Col key={dishIndex} span={24}>
-                <DishListCard
-                  dish={dish}
-                  key={dishIndex}
-                  lunchPriceText={lunchPriceText}
-                  isLunchTime={isLunchTime}
-                  group={categories[index].group}
-                />
-              </Col>
-            ))}
-          </Row>
+<Row gutter={[15, 15]}>
+  {dishArray.map((dish, dishIndex) => {
+    const isOtherGroup = categories[index].group === "OTHER";
+    return (
+      <Col
+        key={dishIndex}
+        {...(isOtherGroup
+          ? { xs: 12, sm: 12, md: 8, lg: 6, xl: 6, xxl: 4 }
+          : { span: 24 })}
+      >
+        <DishListCard
+          dish={dish}
+          lunchPriceText={lunchPriceText}
+          isLunchTime={isLunchTime}
+          group={categories[index].group}
+        />
+      </Col>
+    );
+  })}
+</Row>
+If you want it responsive (still 4 o
         </Col>
       ))}
     </>

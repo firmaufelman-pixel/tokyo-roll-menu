@@ -190,6 +190,8 @@ const useStyle = createUseStyles(({ colors }: Theme) => ({
       paddingRight: 60,
     },
   },otherCard: {
+    // display:'flex',
+    // width:'25%',
   borderRadius: 8,
   overflow: "hidden",
   "& .ant-card-body": {

@@ -57,7 +57,10 @@ export default React.memo(function GroupSwiper({
   }
 
   return (
-    <div className={className} {...props}>
+    <div
+  className={`${className} ${categories[0].group}-wrapper`}
+  {...props}
+>
       <div className={classes.categoriesSwiperContainer}>
         <CatSwiper
           setCatCarouselRef={setCatCarouselRef}
