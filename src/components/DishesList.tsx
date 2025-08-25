@@ -75,6 +75,7 @@ export default function DishesList({
       document.getElementById("dish-list").scrollTop =
         // @ts-ignore
         dishElement.offsetTop - 150;
+      
       setActiveIndex(activeCategoryIndex);
     }
   }, [activeCategoryIndex]);
@@ -88,7 +89,7 @@ export default function DishesList({
           span={24}
           style={{ marginBottom: 40 }}
         >
-          <Divider plain>{dishArray[0]?.category}</Divider>
+          <Divider plain style={{color:'#d6d6d6ff', fontSize:18}}>{dishArray[0]?.category}</Divider>
           <OnScroll
             onChange={(val: boolean) => {
               if (val && index !== activeCategoryIndex) {
@@ -116,7 +117,6 @@ export default function DishesList({
     );
   })}
 </Row>
-If you want it responsive (still 4 o
         </Col>
       ))}
     </>

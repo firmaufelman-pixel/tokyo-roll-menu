@@ -133,7 +133,7 @@ export default function DishSlide({
       data-category={dish.category}
       data-has-image={hasImage ? "true" : "false"}  
     >
-      <Typography.Title level={2} className={classes.slidetitle}>
+      <Typography.Title style={{fontWeight:'500',fontSize:21}} level={2} className={classes.slidetitle}>
         {dish.dish_name}
 
         <Typography.Text
@@ -216,6 +216,7 @@ const useStyle = createUseStyles(({ colors }: Theme) => ({
   slidetitle: {
     color: colors.light100 + " !important",
     paddingBottom: 10,
+    
   },
 
   slideLabel: {
@@ -251,6 +252,7 @@ const useStyle = createUseStyles(({ colors }: Theme) => ({
   },
   slideDescription: {
     color: colors.light300 + " !important",
+    fontSize:12,
   },
   menu: {
     minWidth: 100,

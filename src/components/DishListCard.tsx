@@ -26,6 +26,7 @@ export default function DishListCard({
 }: DishListCardProps) {
   const classes = useStyle();
    const isOther = group === "OTHER";
+   const isDrink = group === "DRINKS";
 
   const handleAddDish =
     (dish: DishContent, price: string, callback: () => void) => () => {
@@ -120,62 +121,80 @@ export default function DishListCard({
   );
 
 return (
-  <Card
-    className={`${classes.dishListCard} ${isOther ? classes.otherCard : ""}`}
-    cover={isOther && (
-  <div className={classes.otherImageWrapper}>
-   <img
-  src={
-    dish?.image && dish.image.trim() !== ""
-      ? SUPABASE_IMAGE_PREFIX + dish.image
-      : placeholderImg
-  }
-  alt={dish.dish_name}
-  className={classes.otherImage}
-/>
-    <Extra dish={dish} />
-    <div className={classes.overlay}>
-      <Typography.Text className={classes.overlayName}>
-        {dish.dish_name}
-      </Typography.Text>
-      <Typography.Text className={classes.overlayPrice}>
-        {dish.price}
-      </Typography.Text>
-    </div>
-  </div>
-)}
-
-  >
-    {!isOther && (
-      <>
-        <Extra dish={dish} />
-        <Typography.Text strong className={classes.slidetitle}>
-          {dish.dish_name}
-        </Typography.Text>
-
-        {!!dish.description && (
-          <Typography.Paragraph className={classes.slideDescription}>
-            <DishDescription content={dish.description} />
-          </Typography.Paragraph>
-        )}
-
-        <div style={{ display: "flex", justifyContent: "flex-start" }}>
-          <div style={{ paddingRight: 15 }}>
-            {dish.price.split(", ").map((price, index) => (
-              <Typography.Paragraph
-                delete={checkIfLunchTime(dish, isLunchTime)}
-                type="secondary"
-                key={index}
-                style={{ marginBottom: 5, marginTop: "5px" }}
-              >
-                {price}
-              </Typography.Paragraph>
-            ))}
+   <Card
+      className={`${classes.dishListCard} ${
+        isOther ? classes.otherCard : ""
+      } ${isDrink ? classes.drinksCard : ""}`}   // ← add drinks class
+      cover={
+        isOther && (
+          <div className={classes.otherImageWrapper}>
+            <img
+              src={
+                dish?.image && dish.image.trim() !== ""
+                  ? SUPABASE_IMAGE_PREFIX + dish.image
+                  : placeholderImg
+              }
+              alt={dish.dish_name}
+              className={classes.otherImage}
+            />
+            <Extra dish={dish} />
+            <div className={classes.overlay}>
+              <Typography.Text className={classes.overlayName}>
+                {dish.dish_name}
+              </Typography.Text>
+              <Typography.Text className={classes.overlayPrice}>
+                {dish.price}
+              </Typography.Text>
+            </div>
           </div>
-        </div>
-      </>
-    )}
-  </Card>
+        )
+      }
+    >
+      {!isOther && (
+        <>
+          {/* left thumbnail for drinks */}
+          {isDrink && (
+            <div className={classes.leftThumb}>
+              <img
+                src={
+                  dish?.image && dish.image.trim() !== ""
+                    ? SUPABASE_IMAGE_PREFIX + dish.image
+                    : placeholderImg
+                }
+                alt={dish.dish_name}
+              />
+            </div>
+          )}
+
+          <Extra dish={dish} />
+
+          <Typography.Text strong className={classes.slidetitle}>
+            {dish.dish_name}
+          </Typography.Text>
+
+          {!!dish.description && (
+            <Typography.Paragraph className={classes.slideDescription}>
+              <DishDescription content={dish.description} />
+            </Typography.Paragraph>
+          )}
+
+          <div style={{ display: "flex", justifyContent: "flex-start" }}>
+            <div style={{ paddingRight: 15 }}>
+              {dish.price.split(", ").map((price, index) => (
+                <Typography.Paragraph
+                  delete={checkIfLunchTime(dish, isLunchTime)}
+                  type="secondary"
+                  key={index}
+                  style={{ marginBottom: 5, marginTop: "5px" }}
+                >
+                  {price}
+                </Typography.Paragraph>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+    </Card>
 );
 
 
@@ -188,16 +207,43 @@ const useStyle = createUseStyles(({ colors }: Theme) => ({
     position: "relative !important",
     "& .ant-card-body": {
       paddingRight: 60,
+      minHeight: 90,
     },
   },otherCard: {
-    // display:'flex',
-    // width:'25%',
   borderRadius: 8,
   overflow: "hidden",
   "& .ant-card-body": {
     display: "none",
   },
 },
+  drinksCard: {
+    "& .ant-card-body": {
+      position: "relative",
+      paddingLeft: 130, 
+      paddingTop:32,
+      height:116,
+    },
+  },
+  leftThumb: {
+    position: "absolute",
+    left: 0,
+    top: "50%",
+    transform: "translateY(-50%)",
+    width: 115,
+    height: 116,
+    borderRadius: 4,
+    borderBottomRightRadius: 0,
+    borderTopRightRadius:0,
+    overflow: "hidden",
+    background: "#111",
+    boxShadow: "0 0 0 1px rgba(24, 19, 19, 0.06) inset",
+    "& img": {
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      display: "block",
+    },
+  },
 otherImageWrapper: {
   position: "relative",
   width: "100%",

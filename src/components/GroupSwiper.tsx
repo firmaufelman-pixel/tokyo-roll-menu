@@ -58,7 +58,7 @@ export default React.memo(function GroupSwiper({
 
   return (
     <div
-  className={`${className} ${categories[0].group}-wrapper`}
+  className={`${className}`}
   {...props}
 >
       <div className={classes.categoriesSwiperContainer}>
