@@ -22,7 +22,8 @@ const [data, setData] = useState<{
   configs: any[];
   categories: Record<string, any[]>;
 }>({
-  groups: [{ name: "FOOD" }, { name: "DRINKS" }, { name: "OTHER" }],
+  groups: [{ name: "DRINKS" }, { name: "FOOD" }, { name: "OTHER" }],
+
   dishes: {},
   configs: [],
   categories: {},
@@ -74,7 +75,7 @@ const fetchInitialData = async () => {
   const categories: Record<string, any[]> = {};
 
   const allGroups = Array.from(new Set((categoriesRes.data ?? []).map((c: any) => c.group)));
-  const groupOrder = ["FOOD", "DRINKS", "OTHER"];
+  const groupOrder = ["DRINKS", "FOOD", "OTHER"];
   const groups = groupOrder.filter((g) => allGroups.includes(g)).map((name) => ({ name }));
 
   

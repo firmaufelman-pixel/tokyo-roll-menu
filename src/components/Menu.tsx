@@ -26,6 +26,13 @@ export default React.memo(function MenuPage({
   isLunchTime,
   setIsScrolled,
 }: MenuPageProps) {
+
+ const LABELS: Record<string, string> = {
+   FOOD: "Asia",
+   DRINKS: "Drinks",
+   OTHER: "Sushi",
+ };
+
   const classes = useStyle();
   const navigate = useNavigate();
   const [activeGroup, setActiveGroup] = useState(0);
@@ -44,7 +51,8 @@ export default React.memo(function MenuPage({
   const navbarMenu = () => {
     let items = groups.map((g, i) => ({
       key: i,
-      label: g.name,
+      // label: g.name,
+      label: LABELS[g.name] ?? g.name,
       className: classes.navbarDropdown,
       // @ts-ignore
       children: categories[g.name].map((c, j) => ({
@@ -85,26 +93,15 @@ export default React.memo(function MenuPage({
                   }, 0);
                 }}
               >
-                {group.name}
+                {/* {group.name} */}
+                {LABELS[group.name] ?? group.name}
               </Button>
             ))}
           </div>
         }
       />
       <Stepper activeIndex={activeGroup}>
-  <div>
-    <GroupSwiper
-      isLunchTime={isLunchTime}
-      lunchPriceText={configs?.find((c: any) => c.name === "Lunch Price Text")?.content}
-      style={{ opacity: loading ? 0 : 1, transition: "all 0.2s" }}
-      className={`FOOD-wrapper`}
-      // @ts-ignore
-      categories={categories["FOOD"]}
-      // @ts-ignore
-      dishes={dishes["FOOD"]}
-      defaultCategoryIndexes={activeCategoryIndexes["FOOD"]}
-    />
-  </div>
+
 
   <div>
     <GroupSwiper
@@ -118,6 +115,20 @@ export default React.memo(function MenuPage({
       // @ts-ignore
       dishes={dishes["DRINKS"]}
       defaultCategoryIndexes={activeCategoryIndexes["DRINKS"]}
+    />
+  </div>
+
+  <div>
+    <GroupSwiper
+      isLunchTime={isLunchTime}
+      lunchPriceText={configs?.find((c: any) => c.name === "Lunch Price Text")?.content}
+      style={{ opacity: loading ? 0 : 1, transition: "all 0.2s" }}
+      className={`FOOD-wrapper`}
+      // @ts-ignore
+      categories={categories["FOOD"]}
+      // @ts-ignore
+      dishes={dishes["FOOD"]}
+      defaultCategoryIndexes={activeCategoryIndexes["FOOD"]}
     />
   </div>
 
