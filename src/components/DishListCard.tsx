@@ -124,7 +124,7 @@ return (
    <Card
       className={`${classes.dishListCard} ${
         isOther ? classes.otherCard : ""
-      } ${isDrink ? classes.drinksCard : ""}`}   // ← add drinks class
+      } ${isDrink ? classes.drinksCard : ""}`}   
       cover={
         isOther && (
           <div className={classes.otherImageWrapper}>
@@ -152,7 +152,7 @@ return (
     >
       {!isOther && (
         <>
-          {/* left thumbnail for drinks */}
+        
           {isDrink && (
             <div className={classes.leftThumb}>
               <img
@@ -285,8 +285,8 @@ overlayPrice: {
     position: "absolute",
     border: "none !important",
     background: "rgba(0,0,0,0.4) !important",
-    top: 15,
-    right: 15,
+    top: 8,
+    right: 8,
     zIndex: 2,
     "& .anticon": {
       color: "#ff4d4f",
