@@ -153,18 +153,21 @@ return (
       {!isOther && (
         <>
         
-          {isDrink && (
-            <div className={classes.leftThumb}>
-              <img
-                src={
-                  dish?.image && dish.image.trim() !== ""
-                    ? SUPABASE_IMAGE_PREFIX + dish.image
-                    : placeholderImg
-                }
-                alt={dish.dish_name}
-              />
-            </div>
-          )}
+              {/* DRINKS thumbnail removed */}
+    {/*
+    {isDrink && (
+      <div className={classes.leftThumb}>
+        <img
+          src={
+            dish?.image && dish.image.trim() !== ""
+              ? SUPABASE_IMAGE_PREFIX + dish.image
+              : placeholderImg
+          }
+          alt={dish.dish_name}
+        />
+      </div>
+    )}
+    */}
 
           <Extra dish={dish} />
 
@@ -219,31 +222,31 @@ const useStyle = createUseStyles(({ colors }: Theme) => ({
   drinksCard: {
     "& .ant-card-body": {
       position: "relative",
-      paddingLeft: 130, 
-      paddingTop:32,
-      height:116,
+      paddingLeft: 20, 
+      paddingTop:20,
+      height:50,
     },
   },
-  leftThumb: {
-    position: "absolute",
-    left: 0,
-    top: "50%",
-    transform: "translateY(-50%)",
-    width: 115,
-    height: 116,
-    borderRadius: 4,
-    borderBottomRightRadius: 0,
-    borderTopRightRadius:0,
-    overflow: "hidden",
-    background: "#111",
-    boxShadow: "0 0 0 1px rgba(24, 19, 19, 0.06) inset",
-    "& img": {
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      display: "block",
-    },
-  },
+  // leftThumb: {
+  //   position: "absolute",
+  //   left: 0,
+  //   top: "50%",
+  //   transform: "translateY(-50%)",
+  //   width: 115,
+  //   height: 116,
+  //   borderRadius: 4,
+  //   borderBottomRightRadius: 0,
+  //   borderTopRightRadius:0,
+  //   overflow: "hidden",
+  //   background: "#111",
+  //   boxShadow: "0 0 0 1px rgba(24, 19, 19, 0.06) inset",
+  //   "& img": {
+  //     width: "100%",
+  //     height: "100%",
+  //     objectFit: "cover",
+  //     display: "block",
+  //   },
+  // },
 otherImageWrapper: {
   position: "relative",
   width: "100%",
