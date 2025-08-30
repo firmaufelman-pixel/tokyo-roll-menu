@@ -138,14 +138,22 @@ return (
               className={classes.otherImage}
             />
             <Extra dish={dish} />
-            <div className={classes.overlay}>
-              <Typography.Text className={classes.overlayName}>
-                {dish.dish_name}
-              </Typography.Text>
-              <Typography.Text className={classes.overlayPrice}>
-                {dish.price}
-              </Typography.Text>
-            </div>
+      <div className={classes.overlay}>
+  <div className={classes.overlayTop}>
+    <Typography.Text className={classes.overlayName}>
+      {dish.dish_name}
+    </Typography.Text>
+    <Typography.Text className={classes.overlayPrice}>
+      {dish.price}
+    </Typography.Text>
+  </div>
+
+  {!!dish.description && (
+    <Typography.Paragraph className={classes.overlayDesc}>
+      <DishDescription content={dish.description} />
+    </Typography.Paragraph>
+  )}
+</div>
           </div>
         )
       }
@@ -250,7 +258,7 @@ const useStyle = createUseStyles(({ colors }: Theme) => ({
 otherImageWrapper: {
   position: "relative",
   width: "100%",
-  height: 180,
+  height: 200,
 },
 otherImage: {
   width: "100%",
@@ -261,15 +269,35 @@ otherImage: {
 },
 overlay: {
   position: "absolute",
-  bottom: 0,
+  bottom: -8,
   left: 0,
   right: 0,
   background: "rgba(0,0,0,0.5)",
   color: "#fff",
   padding: "5px 8px",
   display: "flex",
+  flexDirection: "column", 
+  paddingBottom:'0px',        
+  gap: 2,                              
+  alignItems: "stretch",
+},
+overlayTop: {                        
+  display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  width: "100%",
+},
+overlayDesc: {                      
+  color: "#fff",
+  opacity: 0.9,
+  fontSize: 12,
+  margin: 0,
+  width: "100%",                
+  textAlign: "left",    
+  display: "-webkit-box",
+  WebkitBoxOrient: "vertical",
+  WebkitLineClamp: 2,                
+  overflow: "hidden",
 },
 overlayName: {
   fontSize: 15,
