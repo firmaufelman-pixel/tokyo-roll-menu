@@ -132,7 +132,7 @@ export default React.memo(function MenuPage({
     />
   </div>
 
-  {/* NEW: OTHER same as DRINKS (categorical list) */}
+
   <div>
     <GroupSwiper
       showList
