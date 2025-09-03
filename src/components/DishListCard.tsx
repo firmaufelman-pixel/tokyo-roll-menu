@@ -140,9 +140,12 @@ return (
             <Extra dish={dish} />
       <div className={classes.overlay}>
   <div className={classes.overlayTop}>
-    <Typography.Text className={classes.overlayName}>
-      {dish.dish_name}
-    </Typography.Text>
+   <Typography.Text className={classes.overlayName}>
+  {dish.dish_name}
+  {isOther && !!dish.label && (
+    <span className={classes.labelPill}>{dish.label}</span>
+  )}
+</Typography.Text>
     <Typography.Text className={classes.overlayPrice}>
       {dish.price}
     </Typography.Text>
@@ -212,29 +215,29 @@ return (
 }
 
 const useStyle = createUseStyles(({ colors }: Theme) => ({
-  dishListCard: {
-    background: "#18212b !important",
-    border: "none !important",
-    position: "relative !important",
-    "& .ant-card-body": {
-      paddingRight: 60,
-      minHeight: 90,
-    },
-  },otherCard: {
+ dishListCard: {
+  background: "#18212b !important",
+  border: "none !important",
+  position: "relative !important",
+  "& .ant-card-body": {
+    paddingRight: 60,
+    minHeight: 90,             // was 90
+  },
+},otherCard: {
   borderRadius: 8,
   overflow: "hidden",
   "& .ant-card-body": {
     display: "none",
   },
 },
-  drinksCard: {
-    "& .ant-card-body": {
-      position: "relative",
-      paddingLeft: 20, 
-      paddingTop:20,
-      height:50,
-    },
+drinksCard: {
+  "& .ant-card-body": {
+    position: "relative",
+    paddingLeft: 20,
+    paddingTop: 20,
+    height: 50,                 // was 50
   },
+},
   // leftThumb: {
   //   position: "absolute",
   //   left: 0,
@@ -258,7 +261,19 @@ const useStyle = createUseStyles(({ colors }: Theme) => ({
 otherImageWrapper: {
   position: "relative",
   width: "100%",
-  height: 200,
+  overflow: "hidden",     
+  height: 370,   
+   "&:after": {
+    content: '""',
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 120,                // how tall the fade is over the image
+    pointerEvents: "none",
+    background:
+      "linear-gradient(180deg, rgba(0, 0, 0, 0) 85%, rgba(0,0,0,.45) 98%, rgba(0,0,0,.85) 100%)",
+  },               // was 200
 },
 otherImage: {
   width: "100%",
@@ -266,20 +281,22 @@ otherImage: {
   objectFit: "cover",
   display: "block",
   borderRadius: 8,
+   transform: "translateY(-10px)",  // <— shift image slightly upwards
 },
 overlay: {
   position: "absolute",
-  bottom: -8,
+  bottom: -10,
   left: 0,
   right: 0,
-  background: "rgba(0,0,0,0.5)",
+  background: "rgba(0,0,0,0.90)", // slightly darker; no borders kept
   color: "#fff",
-  padding: "5px 8px",
+  padding: "8px 10px",          // a touch more padding
   display: "flex",
-  flexDirection: "column", 
-  paddingBottom:'0px',        
-  gap: 2,                              
+  flexDirection: "column",
+  paddingBottom: "2px",
+  gap: 4,
   alignItems: "stretch",
+  borderRadius:'8px'
 },
 overlayTop: {                        
   display: "flex",
@@ -287,20 +304,17 @@ overlayTop: {
   alignItems: "center",
   width: "100%",
 },
-overlayDesc: {                      
+overlayDesc: {
   color: "#fff",
-  opacity: 0.9,
+  opacity: 0.95,
   fontSize: 12,
   margin: 0,
-  width: "100%",                
-  textAlign: "left",    
-  display: "-webkit-box",
-  WebkitBoxOrient: "vertical",
-  WebkitLineClamp: 2,                
-  overflow: "hidden",
+  textAlign: "left",
+  whiteSpace: "pre-line",        // mirrors DishDescription behavior in overlay
+  display: "block",
 },
 overlayName: {
-  fontSize: 15,
+  fontSize: 16,
   fontWeight: 500,
   color: "#fff",
 },
@@ -334,20 +348,32 @@ overlayPrice: {
     padding: [5, 10],
     
     fontWeight: "500 !important",
-    fontSize: "14px !important",
+    fontSize: "11px !important",
     display: "inline-block",
   },
+  labelPill: {
+  marginLeft: 6,
+  padding: "1px 3px",
+  fontSize: 10,
+  lineHeight: 1.4,
+  borderRadius: 4,
+  // background: "rgba(0, 0, 0, 0.35)",
+  color: "#ffffffff",
+  verticalAlign: "middle",
+},
+
 
   slideLabelInner: {
     display: "flex",
-    
-    alignItems: "flex-end",
+    height:'10px',
+   
+    alignItems:'flex-start',
 
     "& p": {
       margin: "0 !important",
       display: "inline",
       "&:first-child": {
-        opacity: 0.85,
+        opacity: 0.5,
       },
     },
 

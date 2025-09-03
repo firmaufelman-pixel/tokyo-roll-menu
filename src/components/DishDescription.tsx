@@ -1,3 +1,4 @@
+// DishDescription.tsx
 import { Button } from "antd";
 import React, { useState } from "react";
 import { createUseStyles } from "react-jss";
@@ -6,19 +7,26 @@ interface DishDescriptionProps {
   content: string;
 }
 
-export default React.memo(function DishDescription({
-  content,
-}: DishDescriptionProps) {
+export default React.memo(function DishDescription({ content }: DishDescriptionProps) {
   const classes = useStyle();
   const [readMore, setReadMore] = useState(false);
 
-  if (content.length < 110) {
-    return <>{content}</>;
+  // turn commas into hard line breaks
+  const withLineBreaks = content
+    .split("~")
+    .map(s => s.trim())
+    .filter(Boolean)
+    .join("\n");
+
+  const text = readMore ? withLineBreaks : withLineBreaks.slice(0, 110);
+
+  if (withLineBreaks.length <= 110) {
+    return <span className={classes.desc}>{withLineBreaks}</span>;
   }
 
   return (
     <>
-      {content.substring(0, readMore ? 10000 : 110) + "..."}
+      <span className={classes.desc}>{text}{!readMore ? "…" : ""}</span>
       <Button
         type="text"
         onClick={() => setReadMore(!readMore)}
@@ -30,4 +38,9 @@ export default React.memo(function DishDescription({
   );
 });
 
-const useStyle = createUseStyles(({ colors }: Theme) => ({}));
+const useStyle = createUseStyles(() => ({
+  desc: {
+    whiteSpace: "pre-line", 
+    lineHeight: 1,
+  },
+}));
