@@ -104,7 +104,7 @@ export default function DishesList({
       <Col
         key={dishIndex}
         {...(isOtherGroup
-          ? { xs: 12, sm: 12, md: 8, lg: 6, xl: 6, xxl: 4 }
+          ? { xs: 24, sm: 12, md: 8, lg: 6, xl: 6, xxl: 4 }
           : { span: 24 })}
       >
         <DishListCard

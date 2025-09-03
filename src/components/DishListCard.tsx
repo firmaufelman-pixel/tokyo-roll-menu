@@ -281,7 +281,7 @@ otherImage: {
   objectFit: "cover",
   display: "block",
   borderRadius: 8,
-   transform: "translateY(-10px)",  // <— shift image slightly upwards
+   transform: "translateY(-5px)",  // <— shift image slightly upwards
 },
 overlay: {
   position: "absolute",
@@ -290,11 +290,11 @@ overlay: {
   right: 0,
   background: "rgba(0,0,0,0.90)", // slightly darker; no borders kept
   color: "#fff",
-  padding: "8px 10px",          // a touch more padding
+  padding: "4px 10px",          // a touch more padding
   display: "flex",
   flexDirection: "column",
-  paddingBottom: "2px",
-  gap: 4,
+  paddingBottom: "0px",
+  gap: 2,
   alignItems: "stretch",
   borderRadius:'8px'
 },
@@ -306,7 +306,7 @@ overlayTop: {
 },
 overlayDesc: {
   color: "#fff",
-  opacity: 0.95,
+  opacity: 0.90,
   fontSize: 12,
   margin: 0,
   textAlign: "left",
