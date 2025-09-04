@@ -269,7 +269,7 @@ otherImageWrapper: {
     left: 0,
     right: 0,
     bottom: 0,
-    height: 120,                // how tall the fade is over the image
+    height: 150,                // how tall the fade is over the image
     pointerEvents: "none",
     background:
       "linear-gradient(180deg, rgba(0, 0, 0, 0) 85%, rgba(0,0,0,.45) 98%, rgba(0,0,0,.85) 100%)",
@@ -281,7 +281,7 @@ otherImage: {
   objectFit: "cover",
   display: "block",
   borderRadius: 8,
-   transform: "translateY(-28px)",  // <— shift image slightly upwards
+   transform: "translateY(-20px)",  // <— shift image slightly upwards
 },
 overlay: {
   position: "absolute",
