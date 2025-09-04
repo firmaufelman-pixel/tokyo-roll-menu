@@ -158,12 +158,13 @@ export default function DishSlide({
       )}
 
       <div style={{ display: "flex", justifyContent: "flex-start" }}>
-        <div style={{ paddingRight: 15 }}>
+        <div style={{ paddingRight: 15, }}>
           {dish.price.split(", ").map((price, index) => (
             <Typography.Paragraph
               delete={checkIfLunchTime(dish, isLunchTime)}
               type="secondary"
               key={index}
+              style={{ color:'#b9a389ff', fontWeight:500}}
             >
               {price}
             </Typography.Paragraph>

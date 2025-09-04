@@ -262,7 +262,7 @@ otherImageWrapper: {
   position: "relative",
   width: "100%",
   overflow: "hidden",     
-  height: 310,   
+  height: 290,   
    "&:after": {
     content: '""',
     position: "absolute",
@@ -281,7 +281,7 @@ otherImage: {
   objectFit: "cover",
   display: "block",
   borderRadius: 8,
-   transform: "translateY(-20px)",  // <— shift image slightly upwards
+   transform: "translateY(-28px)",  // <— shift image slightly upwards
 },
 overlay: {
   position: "absolute",
