@@ -262,7 +262,7 @@ otherImageWrapper: {
   position: "relative",
   width: "100%",
   overflow: "hidden",     
-  height: 370,   
+  height: 310,   
    "&:after": {
     content: '""',
     position: "absolute",
@@ -281,22 +281,22 @@ otherImage: {
   objectFit: "cover",
   display: "block",
   borderRadius: 8,
-   transform: "translateY(-5px)",  // <— shift image slightly upwards
+   transform: "translateY(-20px)",  // <— shift image slightly upwards
 },
 overlay: {
   position: "absolute",
   bottom: -10,
   left: 0,
   right: 0,
-  background: "rgba(0,0,0,0.90)", // slightly darker; no borders kept
+  background:  "linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.95) 3%, rgba(0,0,0,1.00) 100%)", 
   color: "#fff",
-  padding: "4px 10px",          // a touch more padding
+  padding: "4px 10px",      
   display: "flex",
   flexDirection: "column",
   paddingBottom: "0px",
   gap: 2,
   alignItems: "stretch",
-  borderRadius:'8px'
+  borderRadius:'12px'
 },
 overlayTop: {                        
   display: "flex",
@@ -310,18 +310,18 @@ overlayDesc: {
   fontSize: 12,
   margin: 0,
   textAlign: "left",
-  whiteSpace: "pre-line",        // mirrors DishDescription behavior in overlay
+  whiteSpace: "pre-line",  
   display: "block",
 },
 overlayName: {
-  fontSize: 16,
+  fontSize: 15,
   fontWeight: 500,
   color: "#fff",
 },
 overlayPrice: {
   fontSize: 13,
-  fontWeight: 400,
-  color: "#ddd",
+  fontWeight: 500,
+  color: "#b9a389ff",
 },
 
   addToWishlistBtn: {
