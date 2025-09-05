@@ -153,7 +153,7 @@ return (
 
   {!!dish.description && (
     <Typography.Paragraph className={classes.overlayDesc}>
-      <DishDescription content={dish.description} />
+      <DishDescription content={dish.description} clampLines={isOther ? 3 : 5} />
     </Typography.Paragraph>
   )}
 </div>
@@ -188,7 +188,7 @@ return (
 
           {!!dish.description && (
             <Typography.Paragraph className={classes.slideDescription}>
-              <DishDescription content={dish.description} />
+              <DishDescription content={dish.description} clampLines={isOther ? 3 : 5} />
             </Typography.Paragraph>
           )}
 
