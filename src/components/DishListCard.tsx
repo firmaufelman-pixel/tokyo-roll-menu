@@ -153,7 +153,7 @@ return (
 
   {!!dish.description && (
     <Typography.Paragraph className={classes.overlayDesc}>
-      <DishDescription content={dish.description} />
+      <DishDescription content={dish.description} clampLines={isOther ? 3 : 5} />
     </Typography.Paragraph>
   )}
 </div>
@@ -188,7 +188,7 @@ return (
 
           {!!dish.description && (
             <Typography.Paragraph className={classes.slideDescription}>
-              <DishDescription content={dish.description} />
+              <DishDescription content={dish.description} clampLines={isOther ? 3 : 5} />
             </Typography.Paragraph>
           )}
 
@@ -221,7 +221,7 @@ const useStyle = createUseStyles(({ colors }: Theme) => ({
   position: "relative !important",
   "& .ant-card-body": {
     paddingRight: 60,
-    minHeight: 90,             // was 90
+    minHeight: 90,             
   },
 },otherCard: {
   borderRadius: 8,
@@ -235,7 +235,7 @@ drinksCard: {
     position: "relative",
     paddingLeft: 20,
     paddingTop: 20,
-    height: 50,                 // was 50
+    height: 50,                 
   },
 },
   // leftThumb: {
@@ -269,7 +269,7 @@ otherImageWrapper: {
     left: 0,
     right: 0,
     bottom: 0,
-    height: 150,                // how tall the fade is over the image
+    height: 150,                
     pointerEvents: "none",
     background:
       "linear-gradient(180deg, rgba(0, 0, 0, 0) 85%, rgba(0,0,0,.45) 98%, rgba(0,0,0,.85) 100%)",
@@ -281,7 +281,7 @@ otherImage: {
   objectFit: "cover",
   display: "block",
   borderRadius: 8,
-   transform: "translateY(-20px)",  // <— shift image slightly upwards
+   transform: "translateY(-20px)",  
 },
 overlay: {
   position: "absolute",
