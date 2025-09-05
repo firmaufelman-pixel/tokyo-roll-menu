@@ -1,11 +1,11 @@
-// DishDescription.tsx
+
 import { Button } from "antd";
 import React, { useState } from "react";
 import { createUseStyles } from "react-jss";
 
 interface DishDescriptionProps {
   content: string;
-  clampLines?: number; // 3 for OTHER, 5 for FOOD
+  clampLines?: number; 
 }
 
 export default React.memo(function DishDescription({
@@ -33,8 +33,8 @@ export default React.memo(function DishDescription({
         style={
           !readMore
             ? {
-                WebkitLineClamp: clampLines,                 // <- driven by prop
-                maxHeight: `calc(${LINE_HEIGHT}em * ${clampLines})`, // reserve space
+                WebkitLineClamp: clampLines,                
+                maxHeight: `calc(${LINE_HEIGHT}em * ${clampLines})`, 
               }
             : undefined
         }
