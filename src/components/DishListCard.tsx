@@ -262,7 +262,7 @@ otherImageWrapper: {
   position: "relative",
   width: "100%",
   overflow: "hidden",     
-  height: "250px !important" ,   
+  maxHeight: "250px !important" ,   
    "&:after": {
     content: '""',
     position: "absolute",
@@ -281,7 +281,7 @@ otherImageWrapper: {
     objectFit: "contain !important", // default for small screens
     display: "block",
     borderRadius: 8,
-    transform: "translateY(-10px)",
+    transform: "translateY(-15px)",
   },
   "@media (min-width: 481px)": {
     otherImage: { objectFit: "cover !important" },
@@ -290,7 +290,9 @@ otherImageWrapper: {
     // }
   },
   "@media (min-width: 1280px)": {
-  otherImageWrapper: { height: "290px !important" }
+  otherImageWrapper: { 
+    height:"290px !important",
+    maxHeight: "290px !important" }
 },
 overlay: {
   position: "absolute",
