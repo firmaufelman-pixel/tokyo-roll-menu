@@ -262,7 +262,7 @@ otherImageWrapper: {
   position: "relative",
   width: "100%",
   overflow: "hidden",     
-  height: 290,   
+  height: "250px !important" ,   
    "&:after": {
     content: '""',
     position: "absolute",
@@ -275,13 +275,22 @@ otherImageWrapper: {
       "linear-gradient(180deg, rgba(0, 0, 0, 0) 85%, rgba(0,0,0,.45) 98%, rgba(0,0,0,.85) 100%)",
   },               // was 200
 },
-otherImage: {
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-  display: "block",
-  borderRadius: 8,
-   transform: "translateY(-20px)",  
+  otherImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "contain !important", // default for small screens
+    display: "block",
+    borderRadius: 8,
+    transform: "translateY(-10px)",
+  },
+  "@media (min-width: 481px)": {
+    otherImage: { objectFit: "cover !important" },
+    // otherImageWrapper: {
+    //   height:"290px"
+    // }
+  },
+  "@media (min-width: 1280px)": {
+  otherImageWrapper: { height: "290px !important" }
 },
 overlay: {
   position: "absolute",
