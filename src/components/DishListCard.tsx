@@ -262,7 +262,7 @@ otherImageWrapper: {
   position: "relative",
   width: "100%",
   overflow: "hidden",     
-  height: "230px !important",   
+  height: "225px !important",   
    "&:after": {
     content: '""',
     position: "absolute",
