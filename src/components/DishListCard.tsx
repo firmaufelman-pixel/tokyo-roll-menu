@@ -262,7 +262,7 @@ otherImageWrapper: {
   position: "relative",
   width: "100%",
   overflow: "hidden",     
-  maxHeight: "250px !important" ,   
+  height: "230px !important",   
    "&:after": {
     content: '""',
     position: "absolute",
@@ -275,25 +275,23 @@ otherImageWrapper: {
       "linear-gradient(180deg, rgba(0, 0, 0, 0) 85%, rgba(0,0,0,.45) 98%, rgba(0,0,0,.85) 100%)",
   },               // was 200
 },
-  otherImage: {
-    width: "100%",
-    height: "100%",
-    objectFit: "contain !important", // default for small screens
-    display: "block",
-    borderRadius: 8,
-    transform: "translateY(-15px)",
-  },
-  "@media (min-width: 481px)": {
-    otherImage: { objectFit: "cover !important" },
-    // otherImageWrapper: {
-    //   height:"290px"
-    // }
-  },
-  "@media (min-width: 1280px)": {
-  otherImageWrapper: { 
-    height:"290px !important",
-    maxHeight: "290px !important" }
+otherImage: {
+  width: "100%",
+  height: "100%",
+  objectFit: "contain",
+  display: "block",
+  borderRadius: 8,
+   transform: "translateY(-20px)",  
 },
+ "@media (min-width: 481px)": {
+    otherImage: { objectFit: "cover !important",
+      transform: "translateY(0px)",  
+     },
+     otherImageWrapper:{
+         height:"340px !important"
+  },
+  },
+ 
 overlay: {
   position: "absolute",
   bottom: -10,
