@@ -281,7 +281,7 @@ otherImage: {
   objectFit: "contain",
   display: "block",
   borderRadius: 8,
-   transform: "translateY(-20px)",  
+   transform: "translateY(-30px)",  
 },
  "@media (min-width: 481px)": {
     otherImage: { objectFit: "cover !important",
