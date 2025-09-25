@@ -216,7 +216,7 @@ return (
 
 const useStyle = createUseStyles(({ colors }: Theme) => ({
  dishListCard: {
-  background: "#18212b !important",
+  background: "black !important",
   border: "none !important",
   position: "relative !important",
   "& .ant-card-body": {
