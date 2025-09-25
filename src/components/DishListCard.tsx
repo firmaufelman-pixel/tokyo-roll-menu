@@ -281,7 +281,8 @@ otherImage: {
   objectFit: "contain",
   display: "block",
   borderRadius: 8,
-   transform: "translateY(-30px)",  
+   transform: "translateY(-20px)",
+   scale:1.05  
 },
  "@media (min-width: 481px)": {
     otherImage: { objectFit: "cover !important",
@@ -305,7 +306,7 @@ overlay: {
   paddingBottom: "0px",
   gap: 2,
   alignItems: "stretch",
-  borderRadius:'12px'
+  borderRadius:'4px'
 },
 overlayTop: {                        
   display: "flex",
