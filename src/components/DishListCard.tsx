@@ -216,7 +216,7 @@ return (
 
 const useStyle = createUseStyles(({ colors }: Theme) => ({
  dishListCard: {
-  background: "#18212b !important",
+  background: "black !important",
   border: "none !important",
   position: "relative !important",
   "& .ant-card-body": {
@@ -262,7 +262,7 @@ otherImageWrapper: {
   position: "relative",
   width: "100%",
   overflow: "hidden",     
-  height: 290,   
+  height: "225px !important",   
    "&:after": {
     content: '""',
     position: "absolute",
@@ -278,11 +278,21 @@ otherImageWrapper: {
 otherImage: {
   width: "100%",
   height: "100%",
-  objectFit: "cover",
+  objectFit: "contain",
   display: "block",
   borderRadius: 8,
-   transform: "translateY(-20px)",  
+   transform: "translateY(-21px)",
+   scale:1.06  
 },
+ "@media (min-width: 481px)": {
+    otherImage: { objectFit: "cover !important",
+      transform: "translateY(0px)",  
+     },
+     otherImageWrapper:{
+         height:"340px !important"
+  },
+  },
+ 
 overlay: {
   position: "absolute",
   bottom: -10,
@@ -296,7 +306,7 @@ overlay: {
   paddingBottom: "0px",
   gap: 2,
   alignItems: "stretch",
-  borderRadius:'12px'
+  borderRadius:'4px'
 },
 overlayTop: {                        
   display: "flex",
